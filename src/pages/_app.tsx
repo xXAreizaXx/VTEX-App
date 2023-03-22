@@ -1,6 +1,16 @@
-import '@/styles/globals.css'
-import type { AppProps } from 'next/app'
+// NextJS
+import type { AppProps } from "next/app";
+
+// Shared
+import AppLyout from "@containers/AppLyout";
+
+// Styles
+import "@styles/globals.css";
 
 export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+    return (
+        <AppLyout>
+            <Component {...pageProps} />
+        </AppLyout>
+    ); 
 }
