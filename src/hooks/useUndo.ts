@@ -15,7 +15,7 @@ export const useUndo = (initialState: statePoint[]) => {
     // Custom Hooks
     const [item, setItem] = useLocalStorage("state");
 
-    const [state, setState] = useState<stateReducer>({
+    const [state, setState] = useState({
         past: item ? item.past : [],
         present: item ? item.present : initialState,
         future: item ? item.future : [],
