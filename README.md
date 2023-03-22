@@ -30,7 +30,7 @@ Next, a list will be shown where the points requested in the technical test will
 
 ### EXTRAS!
 
--   [] Unit Testing
+-   [ ] Unit Testing
 -   [x] Login / Logout
 -   [x] Use an external service to persist the data
 -   [x] Design and usability
