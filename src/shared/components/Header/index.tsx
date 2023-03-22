@@ -7,6 +7,9 @@ import useUser from "@hooks/useUser";
 // Shared components
 import BtnLink from "../BtnLink";
 
+// Firebase
+import { logout } from "@firebase/client";
+
 // Assets
 import defaultAvatar from "@assets/images/defaultAvatar.png";
 
@@ -33,8 +36,9 @@ const Header: React.FC<HeaderProps> = ({ path }) => {
             <div className="flex items-center mr-4">
                 <Image
                     alt="Avatar" 
-                    className="rounded-full border-2 border-primary"
+                    className="rounded-full border-2 border-primary cursor-pointer"
                     height={60}
+                    onClick={logout}
                     src={user?.avatar || defaultAvatar} 
                     width={60} 
                 />

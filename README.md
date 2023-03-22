@@ -2,37 +2,38 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+First, install node_modules:
+
+```bash
+npm install
+```
+
+Second, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+This project is divided into folders for your better understanding, the styles were worked with tailwindcss and css modules, Typescript was also implemented
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Next, a list will be shown where the points requested in the technical test will be evaluated, and those that will be carried out will be marked with an [X].
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### Points to evaluate during the test
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+-   [x] Analysis of requirements and result
+-   [x] Use of tools
+-   [x] View Layout
+-   [x] Clean Code
+-   [x] Use of Lint and Typescript
 
-## Learn More
+### EXTRAS!
 
-To learn more about Next.js, take a look at the following resources:
+-   [] Unit Testing
+-   [x] Login / Logout
+-   [x] Use an external service to persist the data
+-   [x] Design and usability
+-   [x] README
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+The project is deployed in vercel at the following URL [VTEX | App](vtex-indol.vercel.app)

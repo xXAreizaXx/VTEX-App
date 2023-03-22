@@ -7,7 +7,7 @@ import Image from "next/image";
 import { useEffect } from "react";
 
 // Shared
-import BtnPrimary from "@shared/components/BtnGoogle";
+import BtnPrimary from "@shared/components/BtnPrimary";
 import Loader from "@shared/components/Loader";
 
 // Firebase

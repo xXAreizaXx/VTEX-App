@@ -40,3 +40,7 @@ export const loginWithGoogle = () => {
         .signInWithRedirect(googleProvider)
         .then(mapUserFromFirebaseAuthToUser);
 };
+
+export const logout = () => {
+    return firebase.auth().signOut();
+};

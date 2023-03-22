@@ -2,8 +2,8 @@ import React from "react";
 
 interface btnPrimaryProps {
     className?: string;
-    onClick: () => void;
-    children: React.ReactNode;
+    onClick?: () => void;
+    children?: React.ReactNode;
 };
 
 const BtnPrimary: React.FC<btnPrimaryProps> = ({className, onClick, children}) => {    

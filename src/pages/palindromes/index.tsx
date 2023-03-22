@@ -1,5 +1,5 @@
 // NextJS
-import BtnPrimary from "@shared/components/BtnGoogle";
+import BtnPrimary from "@shared/components/BtnPrimary";
 import BtnSecondary from "@shared/components/BtnSecondary";
 import Header from "@shared/components/Header";
 import { NextPage } from "next";
