@@ -1,18 +1,15 @@
 // NextJS
-import BtnPrimary from "@shared/components/BtnPrimary";
-import BtnSecondary from "@shared/components/BtnSecondary";
-import Header from "@shared/components/Header";
-import { NextPage } from "next";
 import Head from "next/head";
 
 // ReactJS
 import { useState } from "react";
 
-const isPalindrome = (word: string): boolean => {
-    const reversedWord = word.split("").reverse().join("");
-    return word === reversedWord;
-};
+// Shared
+import BtnPrimary from "@shared/components/BtnPrimary";
+import BtnSecondary from "@shared/components/BtnSecondary";
+import Header from "@shared/components/Header";
 
+// Constants
 const PATH = [
     {
         href: "/points", 
@@ -26,57 +23,81 @@ const PATH = [
     }
 ];
 
-const PalindromesScreen: NextPage = () => {
-    const [word, setWord] = useState("");
+const PalindromoChecker = () => {
+    const [inputValue, setInputValue] = useState("");
+    const [result, setResult] = useState("");
+    const [history, setHistory] = useState<string[]>([]);
 
-    const [isPal, setIsPal] = useState(false);
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
 
-    const [check, setCheck] = useState(false);
+        if (!/^[a-zA-Z]+$/.test(inputValue)) {
+            setResult("Por favor, ingrese sólo letras");
+            return;
+        }
 
-    const handleCheckPalindrome = () => {
-        const isPalindromeWord = isPalindrome(word.toLowerCase());
+        const isPalindromo = inputValue === inputValue.split("").reverse().join("");
+    
+        if (isPalindromo) {
+            setResult(`${inputValue} es un palíndromo`);
+        } else {
+            setResult(`${inputValue} no es un palíndromo`);
+        }
 
-        setCheck(true);
-        setIsPal(isPalindromeWord);
+        setHistory([...history, inputValue]);
     };
 
-    const handleClear = () => {
-        setWord("");
-        setCheck(false);
-        setIsPal(false);
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setInputValue(e.target.value);
+    };
+
+    const handleClearClick = () => {
+        setInputValue("");
+        setResult("");
+    };
+
+    const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const searchTerm = e.target.value.toLowerCase();
+        const filteredHistory = history.filter(word => word.toLowerCase().includes(searchTerm));
+        setHistory(filteredHistory);
     };
 
     return (
-        <>
+        <>     
             <Head>
                 <title>VTEX | Palindrome</title>
             </Head>
             <div className="w-full h-full">
                 <Header path={PATH} />
-                <div className="flex flex-col justify-center py-2 px-6 gap-4">
-                    <h1 className="text-xl font-bold text-primary">Palindrome Checker</h1>
-                    <div className="flex gap-2">
-                        <input
-                            type="text"
-                            placeholder="Enter a word"
-                            value={word}
-                            onChange={(e) => setWord(e.target.value)}
-                            className="py-2 px-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-                        />
-                        <BtnPrimary onClick={handleCheckPalindrome}>
-                            <p className="text-primary">Check</p>
-                        </BtnPrimary>
-                        <BtnSecondary onClick={handleClear}>
-                            <p className="text-white">Clear</p>
-                        </BtnSecondary>
-                    </div>
-                    {check && (
-                        <div className={`p-2 mb-4 ${isPal ? "bg-green-100 text-green-700" : "bg-red-100 text-primary"} rounded-lg`}>
-                            <p className="font-bold">
-                                {word} is {!isPal && "not"} a palindrome
-                            </p>
+                <div className="p-6">
+                    <h1 className="text-3xl font-bold mb-4">Palindrome Validator</h1>
+                    <form onSubmit={handleSubmit}>
+                        <div className="flex flex-col mb-4">
+                            <label htmlFor="input" className="text-lg mb-2">Enter a word:</label>
+                            <input type="text" id="input" className="p-2 border border-gray-300 rounded-md" value={inputValue} onChange={handleInputChange} />
                         </div>
-                    )}
+                        <div className="flex gap-2">
+                            <BtnPrimary type="submit">
+                                <p className="text-primary">Check</p>
+                            </BtnPrimary>
+                            <BtnSecondary type="button" onClick={handleClearClick}>
+                                <p className="text-white">Clear</p>
+                            </BtnSecondary>
+                        </div>
+                    </form>
+                    <div className="flex flex-col mb-4">
+                        <label htmlFor="history" className="text-lg mb-2">History:</label>
+                        <input type="text" id="history" className="p-2 border border-gray-300 rounded-md mb-4" onChange={handleSearch} />
+                        <ul className="">  
+                            {history.map((word, index) => (
+                                <li key={index}>{word}</li>
+                            ))}
+                        </ul>
+                    </div>
+                    <div className="flex flex-col mb-4">
+                        <label htmlFor="result" className="text-lg mb-2">Result:</label>
+                        <input type="text" id="result" className="p-2 border border-gray-300 rounded-md" value={result} readOnly />
+                    </div>
                 </div>
             </div>
         </>
@@ -84,4 +105,4 @@ const PalindromesScreen: NextPage = () => {
     );
 };
 
-export default PalindromesScreen;
+export default PalindromoChecker;

@@ -16,7 +16,9 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-This project is divided into folders for your better understanding, the styles were worked with tailwindcss and css modules, Typescript was also implemented
+This project is divided into folders for your better understanding, the styles were worked with tailwindcss and css modules, Typescript was also implemented.
+
+As a recommendation, if you want to close the session, click on the profile picture.
 
 Next, a list will be shown where the points requested in the technical test will be evaluated, and those that will be carried out will be marked with an [X].
 
